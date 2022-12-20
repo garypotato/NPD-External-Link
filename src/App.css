@@ -9,19 +9,35 @@
   padding: 50px;
 }
 
-.App>div {
-  margin-bottom: 10px;
+.flexBoxColumn {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
 }
 
-.flexBox {
+.flexBoxRow {
   display: flex;
   flex-direction: row;
-  align-items: center;
-  justify-content: center;
+  margin-bottom: 5px;
 }
 
-.secondEle {
-  margin-left: 10px;
-  width: 600px;
+.flexBoxRow>div:first-child {
+  width: 200px;
+  text-align: left;
+}
+
+.flexBoxRow>input,
+.flexBoxRow>div:nth-child(2) {
+  margin-left: 20px;
+  cursor: pointer;
+}
+
+.jwtContainer {
+  width: 500px;
+}
+
+.lonInButton {
+  width: 100px;
+  margin-left: 20px;
   cursor: pointer;
 }
