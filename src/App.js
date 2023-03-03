@@ -48,8 +48,50 @@ function App() {
     setJwt(e.target.value)
   }
 
+  const handlePILink = () => {
+    fetch(`https://apicore.npdata.net.au/api/v2/property/${propertyId}/link/view`, {
+      method: "GET",
+      headers: {
+        'authorization': `JWT ${jwt}`
+      },
+      redirect: 'manual',
+      credentials: 'include',
+    }).then(response => {
+      console.log(response)
+      window.open(response.url, '_blank');
+    }).catch(err => console.log(err))
+  }
+
+  const hanldeMapLInk = () => {
+    fetch(`https://apicore.npdata.net.au/api/v2/property/${propertyId}/link/map`, {
+      method: "GET",
+      headers: {
+        'authorization': `JWT ${jwt}`
+      },
+      redirect: 'manual',
+      credentials: 'include',
+    }).then(response => {
+      console.log(response)
+      window.open(response.url, '_blank');
+    }).catch(err => console.log(err))
+  }
+
   const handleCmaLink = () => {
     fetch(`https://apicore.npdata.net.au/api/v2/property/${propertyId}/reports/cma/sales`, {
+      method: "GET",
+      headers: {
+        'authorization': `JWT ${jwt}`
+      },
+      redirect: 'manual',
+      credentials: 'include',
+    }).then(response => {
+      console.log(response)
+      window.open(response.url, '_blank');
+    }).catch(err => console.log(err))
+  }
+
+  const handleRentalCmaLink = () => {
+    fetch(`https://apicore.npdata.net.au/api/v2/property/${propertyId}/reports/cma/rental`, {
       method: "GET",
       headers: {
         'authorization': `JWT ${jwt}`
@@ -230,8 +272,26 @@ function App() {
 
       <div className='flexBoxColumn'>
         <div className='flexBoxRow'>
+          <div>PI Details:</div>
+          <div onClick={handlePILink}>{`https://apicore.npdata.net.au/api/v2/property/${propertyId}/link/view`}</div>
+        </div>
+
+        <div className='flexBoxRow'>
+          <div>Map:</div>
+          <div onClick={hanldeMapLInk}>{`https://apicore.npdata.net.au/api/v2/property/${propertyId}/link/map`}</div>
+        </div>
+      </div>
+
+      <div className='flexBoxColumn'>
+
+        <div className='flexBoxRow'>
           <div>CMA Report:</div>
           <div onClick={handleCmaLink}>{`https://apicore.npdata.net.au/api/v2/property/${propertyId}/reports/cma/sales`}</div>
+        </div>
+
+        <div className='flexBoxRow'>
+          <div> Rental CMA Report:</div>
+          <div onClick={handleRentalCmaLink}>{`https://apicore.npdata.net.au/api/v2/property/${propertyId}/reports/cma/rental`}</div>
         </div>
 
         <div className='flexBoxRow'>
